@@ -83,15 +83,13 @@ function updateBlobArray(blobs) {
     }
 
     blobs[i].u =
-      noise2D(Date.now() * NOISE_WALKING_SPEED + blobs[i].id * 10000, 0) * 0.5 +
-      0.5;
+      noise2D(Date.now() * NOISE_WALKING_SPEED + blobs[i].id * 10000, 0) * 0.5;
     blobs[i].v =
-      noise2D(0, Date.now() * NOISE_WALKING_SPEED + blobs[i].id * 10000) * 0.5 +
-      0.5;
+      noise2D(0, Date.now() * NOISE_WALKING_SPEED + blobs[i].id * 10000) * 0.5;
   }
 }
 
-while (true) {
+setInterval(() => {
   updateBlobArray(floor);
   updateBlobArray(wall);
 
@@ -160,4 +158,4 @@ while (true) {
     .concat(floorSpecs);
 
   client.send(new Bundle(...finalBundle));
-}
+}, 0);
