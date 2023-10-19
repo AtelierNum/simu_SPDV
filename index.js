@@ -24,7 +24,7 @@ const idIterator = idGenerator(Math.floor(Math.random() * 10000) + 1);
 let wall = getBlobArray(10);
 let floor = getBlobArray(20);
 const noise2D = createNoise2D();
-const NOISE_WALKING_SPEED = 0.00001;
+const NOISE_WALKING_SPEED = 0.1;
 
 // // lOOPBACK LISTENER FOR TESTING
 // let log = "";
@@ -83,9 +83,9 @@ function updateBlobArray(blobs) {
     }
 
     blobs[i].u =
-      noise2D(Date.now() * NOISE_WALKING_SPEED + blobs[i].id * 10000, 0) * 0.5;
+      noise2D(Date.now() * NOISE_WALKING_SPEED + blobs[i].id, 0) * 0.5;
     blobs[i].v =
-      noise2D(0, Date.now() * NOISE_WALKING_SPEED + blobs[i].id * 10000) * 0.5;
+      noise2D(0, Date.now() * NOISE_WALKING_SPEED + blobs[i].id) * 0.5;
   }
 }
 
